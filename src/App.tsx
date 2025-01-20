@@ -1,8 +1,9 @@
 // App.tsx
 import { createAppKit } from '@reown/appkit/react'
 import { SolanaAdapter } from '@reown/appkit-adapter-solana/react'
-import { solana, solanaTestnet, solanaDevnet } from '@reown/appkit/networks'
-import SendSol from './component/SendSol'
+import { solanaDevnet } from '@reown/appkit/networks'
+// import SendSol from './component/SendSol'
+import Splitter from './component/Splitter'
 
 // 0. Set up Solana Adapter
 const solanaWeb3JsAdapter = new SolanaAdapter({
@@ -10,7 +11,7 @@ const solanaWeb3JsAdapter = new SolanaAdapter({
 })
 
 // 1. Get projectId from https://cloud.reown.com
-const projectId = 'YOUR_PROJECT_ID'
+const projectId = import.meta.env.VITE_REOWN_API
 
 // 2. Create a metadata object - optional
 const metadata = {
@@ -23,7 +24,7 @@ const metadata = {
 // 3. Create modal
 createAppKit({
   adapters: [solanaWeb3JsAdapter],
-  networks: [solana, solanaTestnet, solanaDevnet],
+  networks: [solanaDevnet],
   metadata: metadata,
   projectId,
   features: {
@@ -32,5 +33,7 @@ createAppKit({
 })
 
 export default function App() {
-  return <SendSol />
+  return (<div>
+    <Splitter />
+  </div>);
 }
