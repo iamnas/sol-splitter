@@ -19,6 +19,7 @@ const metadata = {
   description: 'AppKit Solana Example',
   url: 'https://example.com', // origin must match your domain & subdomain
   icons: ['https://avatars.githubusercontent.com/u/179229932']
+
 }
 
 // 3. Create modal
@@ -26,10 +27,12 @@ createAppKit({
   adapters: [solanaWeb3JsAdapter],
   networks: [solanaDevnet],
   metadata: metadata,
+  defaultNetwork:solanaDevnet,
   projectId,
   features: {
     analytics: true // Optional - defaults to your Cloud configuration
   }
+  
 })
 
 export default function App() {
